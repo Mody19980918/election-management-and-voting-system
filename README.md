@@ -220,4 +220,4 @@ clients. The migration preserves existing elections as paper-ballot elections.
 
 ---
 
-COMP 8500SEF — Software Engineering · Topic 2: Election Management and Voting System
+COMP 8500SEF — Software Engineering · Topic 2: Election Management and Voting System (Group 61)
