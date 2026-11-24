@@ -16,13 +16,13 @@ Repository: https://github.com/dennisngan/election-management-and-voting-system 
 | `00-overview.md` | Scope, stakeholders, process, system-level requirements, architecture and models | All |
 | `01-login-and-layout.md` | Sign-in, first login, staff accounts, basic layout | Rico |
 | `02-polling-times.md` | Polling station opening and closing times | Dennis |
-| `03-stock-and-allocations.md` | Ballot paper stock and issuing desks (P(14)) | Harriet |
-| `04-snapshots-and-turnout.md` | Ballot issue snapshots (P(12)) and hourly turnout (P(15)) | Toby |
-| `05-complaints-and-queue.md` | Complaint cases (P(19)) and queue status | John |
-| `06-failure-handling.md` | EPR fallback, outages, paper re-entry and recovery | Mody |
+| `03-stock-and-allocations.md` | Ballot paper stock and issuing desks | Harriet |
+| `04-snapshots-and-turnout.md` | Ballot issue snapshots and hourly turnout | Toby |
+| `05-complaints-and-queue.md` | Complaint cases and queue status | John |
+| `06-failure-handling.md` | Fallback, outages, paper re-entry and recovery | Mody |
 | `07-post-poll-times.md` | Times of actions after the poll, ballot box handover | Lam |
 | `08-special-papers.md` | Tendered, spoilt and unused ballot papers | Salina |
-| `09-count-reports.md` | Stock accounting (P(18)) and count forms F1–F4 | Toby |
+| `09-count-reports.md` | Stock accounting and count forms | Toby |
 | `10-recount-and-completion.md` | Recounts, constituency results and election completion | Lam |
 | `11-traceability-matrix.md` | Requirement → design → code → test | All |
 | `12-testing-strategy.md` | Test levels, techniques and execution record | All |
@@ -54,10 +54,6 @@ In scope:
 
 Out of scope:
 
-- Elector registration and the electronic poll register (EPR). The EPR is an external system;
-  Election Desk only records turnout figures copied from it, or estimated from stock when the
-  EPR is unavailable. In an e-polling election the polling officer checks eligibility outside
-  the system.
 - Remote or online voting (voting outside a polling station).
 - Public result publication.
 - For e-polling elections in v1.1.0: turnout reports, constituency results and election
@@ -77,7 +73,7 @@ Decisions taken when turning the manual into requirements:
 | Manual (existing system) | Election Desk (our system) | Reason |
 | --- | --- | --- |
 | Tablet application managed by MDM | Desktop client (Windows 11, macOS) with a central server | No tablet fleet or MDM is available to a course project; a desktop client can be installed by any member |
-| PRO and APRO(S) accounts | Four roles: Administrator, Polling Officer, Counting Officer, Supervisor | Separation of duties: the person who enters a figure is not the person who approves it |
+| Accounts | Four roles: Administrator, Polling Officer, Counting Officer, Supervisor | Separation of duties: the person who enters a figure is not the person who approves it |
 | Password of 8 or more characters with complexity rules | Password of 12 to 128 characters, different from the current password | Length is a stronger and simpler rule than composition rules |
 | Records uploaded to SIC by hand at fixed times | Records saved on a central server immediately and approved by the Supervisor | One shared source of truth for all desks |
 | One language | Three languages, switchable at run time | Requirement of the Hong Kong context |
@@ -89,9 +85,9 @@ Decisions taken when turning the manual into requirements:
 | Stakeholder | Interest | System role |
 | --- | --- | --- |
 | Election administrator | Prepares the election before polling day and manages staff accounts | `administrator` — set-up only, no access to operational records |
-| Polling staff (APRO(S) in the manual) | Records station work during the poll | `polling_officer` |
+| Polling staff  | Records station work during the poll | `polling_officer` |
 | Counting staff | Records stock accounting and the count | `counting_officer` |
-| Presiding officer (PRO in the manual) | Reviews and approves records, orders recounts, finalises | `supervisor` |
+| Presiding officer  | Reviews and approves records, orders recounts, finalises | `supervisor` |
 | Electors | Secrecy of the vote; a vote that is counted exactly once | No account. In an e-polling election the elector uses the voting screen that a polling officer opens |
 | Candidates | Trustworthy, auditable figures | No account (indirect stakeholders) |
 | Election authority | Audit trail, retention of records | No account (indirect stakeholder) |
@@ -181,7 +177,7 @@ flowchart LR
     server -- CSV / PDF statements --> authority([Election authority])
 ```
 
-The EPR and the paper forms are outside the system boundary. Staff copy figures from them.
+
 The elector is a direct user only in an e-polling election, and only of the voting screen.
 
 ### 7.2 Use case diagram
@@ -203,7 +199,7 @@ flowchart LR
         uc5([UC-05 Record complaint and queue status])
         uc8([UC-08 Account for special ballot papers])
         uc10([UC-10 Approve, recount and finalise])
-        uc6([UC-06 Work in EPR fallback and re-enter paper records])
+        uc6([UC-06 Work in Fallback and re-enter paper records])
         uc7([UC-07 Record ballot box handover and post-poll times])
         uc9([UC-09 Record stock accounting and count])
         uc11([UC-11 Cast an electronic vote])
@@ -423,7 +419,7 @@ stateDiagram-v2
 ### 9.3 State model: reviewed station record
 
 This model applies to polling times, turnout periods, complaint periods, stock accounting and
-EPR fallback records. The `ReviewRequired` state applies to records that depend on another
+Fallback records. The `ReviewRequired` state applies to records that depend on another
 record (turnout, complaint periods, stock accounting).
 
 ```mermaid
@@ -475,12 +471,11 @@ section 1. Forms referred to in this document set:
 
 | Form | Meaning |
 | --- | --- |
-| P(12) | Snapshot of ballot papers issued by each issuing desk |
-| P(14) | Control sheet of ballot papers distributed to issuing desks |
-| P(15) | Hourly voter turnout |
-| P(18) | Ballot paper account after the poll |
-| P(19) | Statistics on complaints received |
+| P(1) | Snapshot of ballot papers issued by each issuing desk |
+| P(2) | Control sheet of ballot papers distributed to issuing desks |
+| P(3) | Hourly voter turnout |
+| P(4) | Ballot paper account after the poll |
+| P(5) | Statistics on complaints received |
 | F1 | Initial tally: votes per candidate, invalid papers, questionable papers |
 | F2 | Determination of questionable papers |
 | F3, F4 | Final result forms derived from F1 and F2 |
-| EPR | Electronic poll register (external system) |
