@@ -158,15 +158,20 @@ TC-TUR-02 change seeded figures, so do not run them on the copy used for the vid
 
 | ID | Requirement | Pre-condition | Steps | Expected result | Result |
 | --- | --- | --- | --- | --- | --- |
-| TC-SNP-01 | FR-SNP-01, FR-SNP-02 | Signed in as `demo_polling` | Open "Counter balances" and view the seeded snapshot. | Each desk: 200 allocated, 50 remaining, 150 issued; station issued 300 | `TODO(Toby)` + screenshot |
-| TC-SNP-02 | FR-SNP-03 | Same | Record a new snapshot giving Counter 1 a remaining range that belongs to Counter 2. | Rejected; no snapshot saved | `TODO(Toby)` |
-| TC-SNP-03 | FR-SNP-03 | Same | Record a new snapshot at a later time in which Counter 1 has more papers remaining than in the seeded snapshot. | Rejected: issued papers cannot go down | `TODO(Toby)` |
-| TC-SNP-04 | FR-SNP-06 | Same | Correct the seeded snapshot without a reason, then with a reason. | Without reason: rejected. With reason: revision 2 saved; revision 1 in history | `TODO(Toby)` |
-| TC-TUR-01 | FR-TUR-08 | Signed in as `demo_polling` | Open "Period turnout". | Period 1 is "Approved" with turnout 300; approved cumulative turnout 300 | `TODO(Toby)` + screenshot |
-| TC-TUR-02 | FR-TUR-07 | Same | Amend period 1 to 299 without a reason, then with a reason; submit. | Without reason: rejected. With reason: new draft, then "Submitted for review"; revision history shows 300 and 299 | `TODO(Toby)` |
-| TC-TUR-03 | FR-TUR-06 | TC-TUR-02 done; signed in as `demo_supervisor` | Approve with a wrong password, then with the correct password. | First refused; second "Approved" | `TODO(Toby)` |
-| TC-TUR-04 | FR-TUR-06, NFR-SEC-04 | Signed in as `demo_polling` | Try to approve a submitted period. | No approval is possible for a Polling Officer | `TODO(Toby)` |
-| TC-TUR-05 | FR-TUR-10 | Same | Export the period statement as CSV and PDF in two languages. | Files contain the approved figure, revision and approver | `TODO(Toby)` |
+| TC-SNP-01 | FR-SNP-01, FR-SNP-02 | Signed in as `demo_polling` | Open "Counter balances" and view the seeded snapshot. | Each desk: 200 allocated, 50 remaining, 150 issued; station issued 300 | Not run |
+| TC-SNP-02 | FR-SNP-03 | Same | Record a new snapshot giving Counter 1 a remaining range that belongs to Counter 2. | Rejected; no snapshot saved | Not run |
+| TC-SNP-03 | FR-SNP-03 | Same | Record a new snapshot at a later time in which Counter 1 has more papers remaining than in the seeded snapshot. | Rejected: issued papers cannot go down | Not run |
+| TC-SNP-04 | FR-SNP-06 | Same | Correct the seeded snapshot without a reason, then with a reason. | Without reason: rejected. With reason: revision 2 saved; revision 1 in history | Not run |
+| TC-TUR-01 | FR-TUR-08 | Signed in as `demo_polling` | Open "Period turnout". | Period 1 is "Approved" with turnout 300; approved cumulative turnout 300 | Not run |
+| TC-TUR-02 | FR-TUR-07 | Same | Amend period 1 to 299 without a reason, then with a reason; submit. | Without reason: rejected. With reason: new draft, then "Submitted for review"; revision history shows 300 and 299 | Not run |
+| TC-TUR-03 | FR-TUR-06 | TC-TUR-02 done; signed in as `demo_supervisor` | Approve with a wrong password, then with the correct password. | First refused; second "Approved" | Not run |
+| TC-TUR-04 | FR-TUR-06, NFR-SEC-04 | Signed in as `demo_polling` | Try to approve a submitted period. | No approval is possible for a Polling Officer | Not run |
+| TC-TUR-05 | FR-TUR-10 | Same | Export the period statement as CSV and PDF in two languages. | Files contain the approved figure, revision and approver | Not run |
+
+Execution status (26 Nov 2026, Toby): TC-SNP-01 to 04 and TC-TUR-01 to 05 were **not run**. The
+shared v1.1.0 demo server runs the e-polling election, in which the snapshot and turnout pages are
+hidden, and no paper-ballot rehearsal copy was deployed. The cases stay as designed for the next
+release that deploys a paper-ballot server (see document 12, section 6).
 
 Equivalence partitions for the cumulative turnout of period n: lower than period n−1
 (invalid), equal to period n−1 (valid, period turnout 0), higher (valid), not a whole number

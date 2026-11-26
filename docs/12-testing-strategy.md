@@ -214,15 +214,19 @@ Fill in after execution. Numbers must come from the tables in the module documen
 | 01 | 5 | | | | Rico | |
 | 02 | 6 | | | | Dennis | |
 | 03 | 7 | | | | Harriet | |
-| 04 | 9 | | | | Toby | |
+| 04 | 9 | 0 | 0 | 9 | Toby | 26 Nov 2026 |
 | 05 | 8 | | | | John | |
 | 06 | 8 | | | | Mody | |
 | 07 | 8 | | | | Lam | |
 | 08 | 6 | | | | Salina | |
-| 09 | 17 | | | | Toby | |
+| 09 | 17 | 0 | 0 | 17 | Toby | 26 Nov 2026 |
 | 10 | 12 | | | | Lam | |
 | 14 | 14 | | | | Dennis | |
 | Total | 100 | | | | | |
+
+Modules 04 and 09 (26 cases) were not run: the shared v1.1.0 demo server runs the e-polling
+election, which hides the stock, turnout and counting pages, and no paper-ballot rehearsal copy
+was deployed. Rows left blank have not been reported by their testers yet.
 
 Defect log:
 

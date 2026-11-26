@@ -232,23 +232,33 @@ click them on the demo used for the video):
 
 | ID | Requirement | Pre-condition | Steps | Expected result | Result |
 | --- | --- | --- | --- | --- | --- |
-| TC-ACC-01 | FR-ACC-02, FR-ACC-03 | Signed in as `demo_counting` | Open "Stock accounting". | Status approved; total received 520; never-issued 220; ordinary issues 300; box estimate from stock 300; box estimate from approved turnout 300 | `TODO(Toby)` + screenshot |
-| TC-ACC-02 | FR-ACC-05 | Same | Press "Preserve and correct revision", change the notes, save without a reason. | Rejected: reason required | `TODO(Toby)` |
-| TC-ACC-03 | FR-ACC-07 | Same | Preview and export the account as PDF. | File shows the approved revision and its sources | `TODO(Toby)` |
-| TC-CNT-01 | FR-CNT-01, FR-CNT-03 | Same | Open "Counting scopes"; select `DEMO-COUNT-01`. | One box `DEMO-BOX-01`, received; account approved; scope ready for count entry | `TODO(Toby)` |
-| TC-CNT-02 | FR-CNT-04, FR-CNT-10 | Same | Open "F1 initial tally"; choose the scope. | Draft with 170, 125, Unmarked 5, questionable 0, actual 300; "inputs are complete and balanced"; F4 final valid 295, final invalid 5 | `TODO(Toby)` + screenshot |
-| TC-CNT-03 | FR-CNT-07 | Same | Change actual counted papers to 299; save and confirm the replacement of F2. | Rejected: actual papers must equal candidate votes plus clearly invalid and questionable papers; the saved draft still shows 300 | `TODO(Toby)` |
-| TC-CNT-04 | FR-CNT-05 | Same | Enter −1, then 1.5, as a candidate's votes. | Not accepted | `TODO(Toby)` |
-| TC-CNT-05 | FR-CNT-12 | Same | Set F1 to 168, 125, Unmarked 5, questionable 2, actual 300; save and confirm the replacement of F2; press "Submit count and record completion". | F1 saved; F2 is now empty and shown as incomplete; submission refused | `TODO(Toby)` |
-| TC-CNT-05a | FR-CNT-09 | TC-CNT-05 done | In F2 enter accepted 1 for Alex Chan, 0 for Jamie Wong, and 0 for every rejection reason; save. | Rejected: accepted and rejected outcomes must equal the questionable papers (2) | `TODO(Toby)` |
-| TC-CNT-06 | FR-CNT-08, FR-CNT-10 | TC-CNT-05 done | In F2 enter a determination start time, accept 1 for Alex Chan and 0 for Jamie Wong, reject 1 as "Void for uncertainty" and 0 for the other reasons; save. | Balanced; F4: Alex Chan 169, Jamie Wong 125, final valid 294, final invalid 6, final accounted 300 | `TODO(Toby)` + screenshot |
-| TC-CNT-07 | FR-CNT-06 | Before TC-CNT-05 | In F1 change "Unmarked" to 4 and "Other" to 1 without an explanation; save. | Rejected: explanation required | `TODO(Toby)` |
-| TC-CNT-08 | FR-CNT-12, FR-BOX-09 | Balanced draft | Submit the count; open "Box handover and milestones". | Status submitted; count completion time now shown | `TODO(Toby)` |
-| TC-CNT-09 | FR-CNT-14, FR-SYS-05 | TC-CNT-08 done; signed in as `demo_supervisor` | Approve with a wrong password, then with the correct one. | Wrong: refused. Correct: approved | `TODO(Toby)` |
-| TC-CNT-10 | FR-CNT-14, NFR-SEC-04 | Signed in as `demo_counting` | Look for the approve action on a submitted count. | Not available to a Counting Officer | `TODO(Toby)` |
-| TC-CNT-11 | FR-CNT-15 | TC-CNT-09 done | As supervisor press "Select as current result" and confirm. | Round shown as "Selected as the current result" | `TODO(Toby)` |
-| TC-CNT-12 | FR-CNT-17 | Same | Under "Count forms and exports" preview F3 and F4 and export the complete count record as PDF. | F3 and F4 match the figures on screen | `TODO(Toby)` + file |
-| TC-CNT-13 | FR-CNT-11, FR-CNT-13 | Fresh rehearsal copy at stage `counting` | Set F1 to 170, 124, invalid 5, questionable 0, actual 299; submit; as supervisor try to approve. | Difference −1 against both estimates shown; approval refused until each difference is accepted with a reason | `TODO(Toby)` |
+| TC-ACC-01 | FR-ACC-02, FR-ACC-03 | Signed in as `demo_counting` | Open "Stock accounting". | Status approved; total received 520; never-issued 220; ordinary issues 300; box estimate from stock 300; box estimate from approved turnout 300 | Not run |
+| TC-ACC-02 | FR-ACC-05 | Same | Press "Preserve and correct revision", change the notes, save without a reason. | Rejected: reason required | Not run |
+| TC-ACC-03 | FR-ACC-07 | Same | Preview and export the account as PDF. | File shows the approved revision and its sources | Not run |
+| TC-CNT-01 | FR-CNT-01, FR-CNT-03 | Same | Open "Counting scopes"; select `DEMO-COUNT-01`. | One box `DEMO-BOX-01`, received; account approved; scope ready for count entry | Not run |
+| TC-CNT-02 | FR-CNT-04, FR-CNT-10 | Same | Open "F1 initial tally"; choose the scope. | Draft with 170, 125, Unmarked 5, questionable 0, actual 300; "inputs are complete and balanced"; F4 final valid 295, final invalid 5 | Not run |
+| TC-CNT-03 | FR-CNT-07 | Same | Change actual counted papers to 299; save and confirm the replacement of F2. | Rejected: actual papers must equal candidate votes plus clearly invalid and questionable papers; the saved draft still shows 300 | Not run |
+| TC-CNT-04 | FR-CNT-05 | Same | Enter −1, then 1.5, as a candidate's votes. | Not accepted | Not run |
+| TC-CNT-05 | FR-CNT-12 | Same | Set F1 to 168, 125, Unmarked 5, questionable 2, actual 300; save and confirm the replacement of F2; press "Submit count and record completion". | F1 saved; F2 is now empty and shown as incomplete; submission refused | Not run |
+| TC-CNT-05a | FR-CNT-09 | TC-CNT-05 done | In F2 enter accepted 1 for Alex Chan, 0 for Jamie Wong, and 0 for every rejection reason; save. | Rejected: accepted and rejected outcomes must equal the questionable papers (2) | Not run |
+| TC-CNT-06 | FR-CNT-08, FR-CNT-10 | TC-CNT-05 done | In F2 enter a determination start time, accept 1 for Alex Chan and 0 for Jamie Wong, reject 1 as "Void for uncertainty" and 0 for the other reasons; save. | Balanced; F4: Alex Chan 169, Jamie Wong 125, final valid 294, final invalid 6, final accounted 300 | Not run |
+| TC-CNT-07 | FR-CNT-06 | Before TC-CNT-05 | In F1 change "Unmarked" to 4 and "Other" to 1 without an explanation; save. | Rejected: explanation required | Not run |
+| TC-CNT-08 | FR-CNT-12, FR-BOX-09 | Balanced draft | Submit the count; open "Box handover and milestones". | Status submitted; count completion time now shown | Not run |
+| TC-CNT-09 | FR-CNT-14, FR-SYS-05 | TC-CNT-08 done; signed in as `demo_supervisor` | Approve with a wrong password, then with the correct one. | Wrong: refused. Correct: approved | Not run |
+| TC-CNT-10 | FR-CNT-14, NFR-SEC-04 | Signed in as `demo_counting` | Look for the approve action on a submitted count. | Not available to a Counting Officer | Not run |
+| TC-CNT-11 | FR-CNT-15 | TC-CNT-09 done | As supervisor press "Select as current result" and confirm. | Round shown as "Selected as the current result" | Not run |
+| TC-CNT-12 | FR-CNT-17 | Same | Under "Count forms and exports" preview F3 and F4 and export the complete count record as PDF. | F3 and F4 match the figures on screen | Not run |
+| TC-CNT-13 | FR-CNT-11, FR-CNT-13 | Fresh rehearsal copy at stage `counting` | Set F1 to 170, 124, invalid 5, questionable 0, actual 299; submit; as supervisor try to approve. | Difference −1 against both estimates shown; approval refused until each difference is accepted with a reason | Not run |
+
+Execution status (26 Nov 2026, Toby): TC-ACC-01 to 03, TC-CNT-01 to 13 and TC-CNT-05a were **not
+run**. The shared v1.1.0 demo server runs the e-polling election, in which the accounting and
+counting pages are hidden, and no paper-ballot rehearsal copy was deployed. The cases stay as
+designed for the next release that deploys a paper-ballot server (see document 12, section 6).
+
+Open point to check when the cases are run: TC-CNT-03 expects the save to be rejected when the
+actual count does not balance. The developer's description (Dennis, 22 Nov 2026) is that an
+unbalanced draft can be saved and only submission is blocked. Record the observed behaviour and
+correct whichever of the expected result or the code is wrong.
 
 Equivalence partitions for a vote quantity: blank (valid as "not observed", blocks
 submission), negative (invalid), 0 (valid, boundary), positive whole number (valid),
